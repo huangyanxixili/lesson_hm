@@ -4,7 +4,7 @@ let obj = {
     company : "无"
 }
 
-obj.hometown = "南昌"
+// obj.hometown = "南昌"
 
 // 拷贝赋值
 let a = 1;
