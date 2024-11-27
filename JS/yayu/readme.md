@@ -48,10 +48,10 @@
 ## 三者关系
 - 构造函数（Person）
 - 原型对象（prototype）
-    不想class 绑在一起，拆的开
+    不像class 绑在一起，拆的开
 - 实例对象（Person.prototype）
 
-Person ----> __proto__ ----> prototype（可以来自于 Person.prototype = 实例对象）
+Person ----> __proto__ ----> prototype（可以来自于 Person.prototype = 原型对象）
 
 
 
