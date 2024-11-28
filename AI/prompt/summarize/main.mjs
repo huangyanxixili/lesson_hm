@@ -24,7 +24,7 @@ const getCompletion = async (prompt, model="gpt-3.5-turbo") => {
     // AIGC chat 接口
     const response = await client.chat.completions.create({
         model: model,
-        messages: messgaes,
+        messages: messages,
         // LLM 生成内容的文本的随机性 0-1 越大越随机
         temperature: 0,
     });
