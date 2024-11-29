@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <style>
+        /* <p>(标签) 选择器为 1 分 */
+        p {
+            color: blue;
+        }
+
+        /* class(类名) 选择器为 11 分 */
+        .container p {
+            color: red;
+        }
+
+        /* id 选择器为 101 分 */
+        #main p {
+            color: green;
+        }
+        
+        /* 分数为无限大 */
+        p {
+            color: blue !important;
+        }
+        
+        /* 同等分数相同的 后面覆盖前面 --> 层叠式 */
+    </style>
+</head>
+<body>
+    <!-- attribute 属性 -->
+    <div id="main" class="container">
+        <!-- 行级分数为 1001 分 -->
+        <p style="color:pink;">这是一段甘12爱情故事</p>
+    </div>
+</body>
+</html>
