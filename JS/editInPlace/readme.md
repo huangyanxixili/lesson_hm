@@ -9,7 +9,7 @@
 
 - DOM 编程
    - 如何呈现文本和编辑状态
-        display: none
+          display: none
    - 提升业务能力
        - 从 DOM 节点对象（查找、style.display）
        - 对于项目 --> 体验下，了解**业务需求**
