@@ -1,0 +1,31 @@
+<body>
+    <div>
+        <label for="Input">用户输入</label>
+        <input
+            type="text"
+            id="Input"
+            placeholder="请输入"
+        >
+    </div>
+    <script>
+        const input = document.querySelector('Input');
+        input.addEventListener('input', debounce(function () {
+            // 用debounce函数去约束input事件,但是实际执行的函数是function函数,防抖延迟设置的是1000ms
+            console.log('用户输入：', input.value);
+        }, 1000));
+        
+        /* 
+            func：回调函数（真正的功能）
+            delay：延迟时间
+        */
+        function debounce(func, delay) {
+            let timeout; // timeout定时器来控制事件
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    func() // 调用真正的功能
+                }, delay)
+            }
+        }
+    </script>
+</body>
