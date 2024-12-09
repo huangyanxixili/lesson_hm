@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 为什么要有Symbol呢？（因为Symbol可以让你放心加入一些地方，绝对不会重复）
+        const wes = Symbol("Wes");
+        // 同学 （对象字面量）
+        let name = "西西里"
+        
+        const classMates = {
+            // key（字符串）会覆盖
+            "xxl":1,
+            "xxl":2,
+            [name + "的传说"]:"猛男", // 根据name的值来创建属性名，即 "西西里的传说"，name如果变成"东东里"，那么属性名就变成"东东里的传说"
+            // Symbol 可以代替字符串作为key
+            [Symbol("Mark")]:{grade: 50, gender: "male"},
+            [Symbol("olivia")]:{grade: 80, gender: "female"},
+            [Symbol("olivia")]:{grade: 80, gender: "female"},
+        }
+        console.log(classMates[name], classMates.xxl);
+        console.log(classMates);
+
+        // 二维数组
+        for(let [key, value] of Object.entries(classMates)){
+            console.log(key, value);
+        }
+
+        for(const person in classMates){
+            // person是字符串（key），classMates[person]是值（value）
+            console.log(person, classMates[person]);
+        }
+
+        const syms = Object.getOwnPropertySymbols(classMates);
+        console.log(syms);
+
+        const data = syms.map(sym => classMates[sym].grade);
+        console.log(data);
+        // 属性描述符
+        console.log(Object.getOwnPropertyDescriptors(classMates));
+    </script>
+</body>
+</html>
