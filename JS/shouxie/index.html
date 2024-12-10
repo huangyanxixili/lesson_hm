@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {
+            name: 'Cherry',
+            fn: function(a, b){
+                console.log(this.name)
+                console.log(a + b)
+            }
+        }
+
+        var b = a.fn; // 普通函数
+        // apply() 改变this的指向，并且立即执行函数
+
+        console.log(b.apply(a, [1, 2])) // 相当于执行了a.fn(1, 2)，this指向a
+        // 在这里a=1,b=2,加号执行的是加法运算，输出3
+
+        console.log(b.call(a, [1, 2])) // 相当于执行了a.fn([1, 2])，this指向a
+        // 在这里a=[1,2],b=undefined，加号就会执行字符串拼接，输出1,2undefined
+        // 注：在 JS 中，当数组与其他类型进行加法运算时，数组会被隐式地执行 [].toString()转化为字符串。
+        //     同理undefined与string进行加法运算时，undefined会被隐式地执行 String(undefined)转化为字符串。
+
+        // call与apply的区别：call(thisArg, arg1, arg2, ...) 和 apply(thisArg, [argsArray])
+        //   1. 参数区别：（第一个参数都是this的指向）
+        //               apply的后续参数是一次性调用，并且是以数组的形式。
+        //               call的后续参数是一个个单独调用的。
+
+        console.log(b.bind(a, 1, 2)())
+        // 这里返回一个函数而不是直接执行它，因为 Function.prototype.bind() 方法创建并返回一个新的函数
+        // 而不是立即调用原函数。这个新函数的 this 值被永久绑定到传递给 bind() 的第一个参数，并且可以预设部分参数（即部分应用）。
+    </script>
+</body>
+</html>
