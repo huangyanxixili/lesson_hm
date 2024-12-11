@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // HTML 文档时遇到 <script> 标签，它会暂停构建 DOM（文档对象模型）和渲染页面，直到该脚本被完全加载、解析和执行完毕。
+    // （即script 会阻塞）通过这个特性来动态设置 html font-size
+
+    // 立即执行函数 ==> (function(){ 函数内代码 })()
+    (function() {
+        function calc() {
+            // document.documentElement 返回 HTML 文档的根元素
+            const w = document.documentElement.clientWidth;
+            console.log(w);
+            document.documentElement.style.fontSize = w / 10 + 'px';
+        }
+        calc();
+        // 监听窗口大小变化 
+        window.onresize = function() {
+            calc();
+        }
+    })()
+</script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    ul, li {
+        list-style:none;
+    }
+    html, body {
+        height: 100%;
+        background-color: green;
+    }
+    .item-section {
+        min-height: 100%;
+        background-color: #ee0a3b;
+        position: relative;
+        font-size: 24px;
+    }
+    .item-section_header img {
+        width: 10rem;
+    }
+    .item-section ul{
+        padding: 0.133333rem;
+    }
+    .flag {
+        display: table;
+        width: 100%;
+        margin-bottom: 1px;
+        background-color: #fff;
+    }
+    .flag .flag-item {
+        /* inline -> table-cell */
+        display: table-cell;
+        padding: 0.16rem 0;
+        vertical-align: top;
+        background-color: #fff;
+    }
+    .flag .flag-item.figure {
+        width: 2.346667rem;
+        height: 2.346667rem;
+    }
+    .flag .flag-title a{
+        font-size: 14px;
+        color: #000;
+        line-height: 1.25;
+        text-align: center;
+        text-decoration: none;
+    }
+    /* .flag .flag-item.figcaption {
+
+    } */
+</style>
+<body>
+    <div class="item-section">
+        <div class="item-section_header">
+            <h2>
+                <img src="http://gw.alicdn.com/mt/TB1PNLZKXXXXXaTXXXXXXXXXXXX-750-481.jpg" alt="">
+            </h2>
+            <ul>
+                <li class="flag">
+                    <a href="#" class="figure flag-item">
+                        <img src="https://p26-passport.byteacctimg.com/img/user-avatar/05d48ed6eb4c84f0b9949a2f985f25af" alt="">
+                    </a>
+                    <div class="figcation flag-item">
+                        <div class="flag-title">
+                            <a href="#">Carter's1年式灰色长袖连体衣包脚爬服全棉鲸鱼男婴儿童装115G093</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
