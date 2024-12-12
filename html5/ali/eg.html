@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        (function () {
+            function calc() {
+                // document.documentElement 返回 HTML 文档的根元素
+                const w = document.documentElement.clientWidth;
+                // console.log(w);
+                document.documentElement.style.fontSize = w / 10 + 'px';
+            }
+            calc();
+            // 监听窗口大小变化 
+            window.onresize = function() {
+                calc();
+            }
+        })()
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:10rem;height:3rem;background-color: red;"></div>
+    <div style="width:5rem;height:3rem;background-color: green;"></div>
+</body>
+</html>
