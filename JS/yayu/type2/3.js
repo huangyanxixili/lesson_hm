@@ -17,7 +17,7 @@ console.log(String([1, 2]), '[1, 2]') // 1,2 [1, 2]
 // 但是对象上没有 toString 方法，所以会去原型链上找，调用的是 Object 原型上的 toString 方法
 console.log(({a: 1}).toString) // [Function: toString]
 
-console.log(Array.prototype) // [Function: toString]
+console.log(Array.prototype.toString) // [Function: toString]
 console.log(Array.prototype.__proto__ === Object.prototype)
 console.log(Array.prototype.__proto__.__proto__ === null)
 
