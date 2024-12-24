@@ -1,8 +1,11 @@
 <script setup>
+// JS 代码
 import HelloWorld from './components/HelloWorld.vue'
 </script>
 
+
 <template>
+  <!-- html结构 -->
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -15,6 +18,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+/* 样式 */
 .logo {
   height: 6em;
   padding: 1.5em;
