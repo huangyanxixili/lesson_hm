@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="app"></h2>
+    <input type="text" id="text-input">
+    <script>
+        const app = document.getElementById("app");
+        const textInput = document.getElementById("text-input");
+
+        textInput.addEventListener('input', function(event) {
+            var val = event.target.value;
+            console.log(val);
+            app.innerText = val;
+            // 也可以通过 textInput.value 和 this.value 获取值
+        })
+    </script>
+</body>
+</html>
