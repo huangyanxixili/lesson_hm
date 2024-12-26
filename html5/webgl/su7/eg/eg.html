@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 地球</title>
+    <!-- 使用cdn加载了three.js（JavaScript 的 3D 图形库） -->
+    <!-- 画地球 选择框架 加速绘制流程 -->
+    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+</head>
+<body>
+    <canvas id="webglcanvas"></canvas>
+    <script>
+        // 3D 地球
+        // 3D 世界就是镜头拍出的世界
+        let canvas, // 实例化 绘制图形的容器，Three.js将在这个元素上渲染3D场景。
+            camera, // 实例化Three.js相机对象，定义了观察者的位置和视角，它决定了场景中哪些部分是可见的。
+            scene, // 实例化Three.js场景对象，包含了所有的3D对象和光源。
+            renderer, // 实例化Three.js渲染器对象，负责将场景的3D对象转换为2D图像，并渲染到canvas元素上。
+            group; // 实例化Three.js组对象，组对象是一个容器，可以用来组织和管理多个3D对象
+
+        let mouseX = 0, // mousemove 坐标
+            mouseY = 0;
+
+        let windowHalfX = window.innerWidth / 2, // 计算窗口的中心点坐标，x、y轴都是窗口的一半
+            windowHalfY = window.innerHeight / 2;
+
+        let isMouseDown = false; // 标记鼠标是否按下
+        let previousMousePosition = {
+            x: 0,
+            y: 0
+        }; // 记录上一次鼠标的位置
+
+        // 准备工作
+        function init() {
+            canvas = document.getElementById('webglcanvas'); // 获取canvas元素
+            // 实例化照相机 THREE.PerspectiveCamera(fov,aspect,near,far)
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
+            // 照相机离场景的距离
+            camera.position.z = 500;
+
+            scene = new THREE.Scene(); // 实例化场景
+            scene.background = new THREE.Color(0xffffff); // 背景色
+
+            group = new THREE.Group(); // 实例化组对象
+            scene.add(group); // 将组对象添加到场景中
+
+            let loader = new THREE.TextureLoader(); // 实例化纹理加载器
+            loader.load('land_ocean_ice_cloud_2048.jpg', function(texture) {
+                let geometry = new THREE.SphereGeometry(200, 20, 20); // 实例化球体几何
+                let material = new THREE.MeshBasicMaterial({
+                    map: texture, // 设置纹理
+                }); // 实例化材质
+
+                let mesh = new THREE.Mesh(geometry, material); // 实例化一个可以绘制的3D网格
+                group.add(mesh); // 将网格添加到组对象中
+
+                // 渲染器
+                renderer = new THREE.WebGLRenderer({
+                    canvas: canvas, // 指定渲染器的目标元素canvas
+                    antialias: true // 抗锯齿
+                }); // 实例化渲染器
+                renderer.setSize(window.innerWidth, window.innerHeight); // 设置渲染器的大小
+
+                // 添加鼠标事件监听器
+                canvas.addEventListener('mousedown', onDocumentMouseDown, false);
+                canvas.addEventListener('mouseup', onDocumentMouseUp, false);
+                canvas.addEventListener('mousemove', onDocumentMouseMove, false);
+            }); // 加载纹理
+        }
+
+        function onDocumentMouseDown(event) {
+            isMouseDown = true;
+            previousMousePosition = {
+                x: event.clientX,
+                y: event.clientY
+            };
+        }
+
+        function onDocumentMouseUp(event) {
+            isMouseDown = false;
+        }
+
+        function onDocumentMouseMove(event) {
+            if (isMouseDown) {
+                let deltaMove = {
+                    x: event.clientX - previousMousePosition.x,
+                    y: event.clientY - previousMousePosition.y
+                };
+
+                previousMousePosition = {
+                    x: event.clientX,
+                    y: event.clientY
+                };
+
+                // 根据鼠标移动的距离更新相机的旋转角度
+                camera.rotation.y += deltaMove.x * 0.005; // 水平旋转
+                // camera.rotation.x += deltaMove.y * 0.005; // 垂直旋转
+
+                // 确保相机与地球的距离保持不变
+                camera.position.x = Math.sin(camera.rotation.y) * 500;
+                camera.position.z = Math.cos(camera.rotation.y) * 500;
+            }
+        }
+        function render() {
+            camera.lookAt(scene.position);
+            group.rotation.y += 0.005;
+            renderer.render(scene, camera);
+        }
+
+        function animate() {
+            // 递归调用 按照屏幕的刷新率同步，例如，60Hz的显示器每秒会调用60次）
+            requestAnimationFrame(animate);
+            render();
+        }
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
