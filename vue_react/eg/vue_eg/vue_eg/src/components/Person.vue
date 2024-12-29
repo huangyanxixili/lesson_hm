@@ -28,8 +28,8 @@
             }
         },
 
-        // 在 Vue 3 中，methods 对象已经被移除
-        method: {
+        // 在 Vue 3 中，methods 对象也可以使用
+        methods: {
             b_text() {
                 console.log("b");
             }
