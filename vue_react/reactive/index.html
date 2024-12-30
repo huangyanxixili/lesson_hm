@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式API</title>
+</head>
+<body>
+    <div id="container">1</div>
+    <div id="count">2</div>
+    <button id="button">点击+1</button>
+    <button id="btn">点击*2</button>
+    <script>
+        // JSON对象 --> JSON数据
+        // 将数据包装成响应式对象
+        var obj = {
+            value: 1, // 初始值
+            count: 2,
+        }
+
+        // 拦截器 在修改值之前拦截住
+        // 定义或修改一个对象的属性（value 被定义为 obj 的一个新属性，可以通过obj.value来访问）
+        Object.defineProperty(obj, 'value', {
+            get: function() { // 当尝试读取 obj.value 时触发
+                console.log('读取了 value 属性');
+                return value;
+            }, 
+            set: function(newValue) { // 当尝试设置 obj.value 时触发
+                console.log('修改了 value 属性');
+                value = newValue;
+                document.getElementById('container').innerHTML = newValue;
+            }
+        })
+
+        Object.defineProperty(obj, 'count', {
+            get: function() { // 当尝试读取 obj.value 时触发
+                console.log('读取了 count 属性');
+                return count;
+            }, 
+            set: function(newValue) { // 当尝试设置 obj.value 时触发
+                count = newValue; // 修改数据
+                document.getElementById('count').innerHTML = newValue;
+            }
+        })
+
+
+        document.getElementById('button').addEventListener('click', function() {
+            obj.value++;
+        })
+        document.getElementById('btn').addEventListener('click', function() {
+            obj.count *= 2;
+        })
+    </script>
+</body>
+</html>
