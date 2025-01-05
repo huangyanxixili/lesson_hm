@@ -1,15 +1,15 @@
 <template>
   <!-- html -->
-  <Person1 />
+  <Person2 />
 </template>
 
 <script>
   // JS
-  import Person1 from './components/Person1.vue'
+  import Person2 from './components/Person2.vue'
 
   export default {
     name: 'App', // 组件名
-    components: { Person1 } // 注册组件
+    components: { Person2 } // 注册组件
   }
 </script>
 
