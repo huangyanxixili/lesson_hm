@@ -7,15 +7,17 @@
 
 - 布局 Layout
 
-- 盒模型 盒子(本身)大小
+- 盒模型计算方式（box-sizing）
     box-sizing border+padding+content
-    盒模型 标准盒模型 content-box  
-    IE盒模型 border-box  wd content
+    盒模型 标准盒模型 content-box (设置的`width`和`height`仅应用于`content`) 
+    IE盒模型 border-box (设置的`width`和`height`包含`content`+`padding`+`border`)
 
-- 认标签，但也可转变 display
-    块级元素（盒模型） block（div等）
-    行内元素 inline 不能设置宽高，宽高由内容决定（span等）不能用于做盒子 
-    块级元素为何默认宽度100%？
+- 认标签，但也可用display转变
+    块级元素 block（div等）
+    行内元素 inline（span等）不能设置宽高，宽高由内容决定，不能用于做盒子 
+    块级元素为何默认占据父容器的整个宽度（100%）？
+       - 块级元素的设计目的是为了构建页面的主要结构
+       - 大多数块级元素的默认样式是由用户代理样式表（即浏览器内置的默认样式）定义的
     html 是第一个BFC 元素，body 参与html的BFC
         页面显示由html负责 页面的布局 块级元素从上到下，行内元素从左到右
 
