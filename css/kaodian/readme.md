@@ -46,3 +46,37 @@
    - 触发新BFC
        - overflow:hidden|auto... 不为visible（就像水杯盛开水）
 
+
+- 页面是平面的
+    BFC 、文档流 、布局 、盒模型、 选择器、 继承.... 为渲染引擎像素（rgb 像素点）计算而服务的
+   - z-index 越大越在上面
+   - 一层一层计算 最后叠加起来（图层的合成）
+   - 层叠上下文是HTML 的三维概念，发生堆叠。 z-index 受父元素的影响，如果父元素小的话，z-index 就没有效果了
+       - 设计原因：
+           - html DOM树 浏览器解析程序的数据结构（树）
+           - css cssOM树
+           - DOM树 + cssOM树 = render树（渲染树）-> 布局layout（float，position，flex等） -> 绘制paint(z-index) -> 合成composite(图层) -> 渲染引擎挂载到像素点上。
+           - z-index 太多了，性能不好
+               - 解决方案： 父图层 管理 子图层。  
+
+- css 有三种写法
+    - 行内样式
+        样式优先级最高(行内样式、!important 少写，不好维护)  
+        :style={width: width+'px'} 动态样式还是需要用行内样式
+    - 内部样式(内嵌样式)
+        少用，不方便复用和管理
+        影响页面加载速度
+    - 外部样式
+        好维护
+        好复用
+        模块化
+        并发请求，DOM 可以提前解析和CSS 结合，渲染，页面尽早出来（快）
+
+- stylus 
+    CSS 预编译器
+    浏览器还是只认css ，先写styl文件，再通过命令编译成css文件
+   - npm i -g stylus 全局安装了 stylus
+   - stylus -w .styl -o .css
+   - 快 不用写{} 不用写:;
+   - 用tab 缩进一下 选择器和规则的归属
+   - stylus 让css 更强大

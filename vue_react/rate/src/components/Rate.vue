@@ -8,7 +8,7 @@
 
 <script setup>
 import { ref, defineProps, computed } from 'vue'
-let count = ref(0) // 组件自有的响应数据 
+// let count = ref(0) // 组件自有的响应数据 
 // 子组件和父组件不一定是一直绑定的，哪里需要往哪里搬
 // 定义props 业务 消费数据，不是自身的数据，而和父组件绑定
 // 告诉外界，我需要一个什么类型的数据
