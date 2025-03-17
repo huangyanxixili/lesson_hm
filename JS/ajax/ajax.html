@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
@@ -12,7 +14,7 @@
         // fetch 是 js 主动拉取数据的方式，并且不需要刷新页面
         // fetch 的前辈 XMLHttpRequest
         const xhr = new XMLHttpRequest(); // 实例化一个 xhr 请求对象
-        xhr.open('GET', 'https://api.github.com/orgs/lemoncode/members', false); // false 拒绝同步请求（即变为异步）
+        xhr.open('GET', 'https://api.github.com/orgs/lemoncode/members', true); // true 同意异步请求
         xhr.onreadystatechange = function () {
             if (xhr.status == 200 && xhr.readyState == 4){ // 
                 const data = JSON.parse(xhr.responseText);

@@ -4,7 +4,7 @@
    - 请求数据接口
         ```javascript
         const xhr = new XMLHttpRequest(); // 创建 xhr 对象
-        xhr.open('GET', url , false); // 配置请求方式、请求地址、是否同步
+        xhr.open('GET', url , false); // 配置请求方式、请求地址、是否异步
         ```
    - 发送请求
         `xhr.send();`
