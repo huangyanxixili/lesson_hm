@@ -12,8 +12,10 @@ const toggleMouse = () => {
 </script>
 
 <template>
-  <MousePos v-if="showMouse"/>
-  <button @click="toggleMouse">切换显示</button>
+  <div>
+    <MousePos v-if="showMouse"/>
+    <button @click="toggleMouse">切换显示</button>
+  </div>
 </template>
 
 <style scoped>
