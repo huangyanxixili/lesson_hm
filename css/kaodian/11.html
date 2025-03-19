@@ -9,6 +9,9 @@
             margin: 0;
             padding: 0;
         }
+        html {
+            padding: 20px;
+        }
         div {
             width: 100px;
             height: 100px;
@@ -24,23 +27,28 @@
             z-index: 1;
         }
         p {
+            opacity: 0.7;
             position: absolute;
             font-size: 20px;
             width: 100px;
             height: 100px;
         }
         .a {
-            background-color:blue;
+            opacity: 1;
+            border: 1px dashed #009;
+            background-color:#ddf;
             z-index: 100; 
         }
         .b {
-            background-color: green;
+            border: 1px dashed #696;
+            background-color: #cfc;
             top: 20px;
             left: 20px;
             z-index: 200;
         }
         .c {
-            background-color: red;
+            border: 1px dashed #900;
+            background-color: #fdd;
             top: -20px;
             left: 40px;
             z-index: 9999;

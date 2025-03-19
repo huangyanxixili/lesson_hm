@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Float Example</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .container {
-            border: 2px solid black;
-            padding: 10px;
-            width: 300px;
-            /* overflow: hidden; */
-        }
-        .float-left {
-            float: left;
-            width: 100px;
-            height: 100px;
-            background-color: lightblue;
-            margin: 10px;
-        }
-        .margin-box {
-            width: 200px;
-            height: 100px;
-            background-color: lightgreen;
-            margin: 20px 0 20px 50px;
-        }
-    </style>
+    <title>层叠上下文的父子关系</title>
+    <link rel="stylesheet" href="./eg.css">
 </head>
 <body>
-    <div class="container">
-        <div class="float-left">浮动元素</div>
-        <div class="margin-box">这是一个有左边距的盒子</div>
+    <div id="div1">
+        <h1>元素1</h1>
+        <code
+            >position: relative;<br />
+            z-index: 5;</code
+        >
+    </div>
+    
+    <div id="div2">
+        <h1>元素2</h1>
+        <code
+            >position: relative;<br />
+            z-index: 2;</code
+        >
+    </div>
+    
+    <div id="div3">
+        <div id="div4">
+            <h1>元素4</h1>
+            <code
+                >position: relative;<br />
+                z-index: 6;</code
+            >
+        </div>
+    
+        <h1>元素3</h1>
+        <code
+            >position: absolute;<br />
+            z-index: 4;</code
+        >
+    
+        <div id="div5">
+            <h1>元素5</h1>
+            <code
+                >position: relative;<br />
+                z-index: 1;</code
+            >
+        </div>
+    
+        <div id="div6">
+            <h1>元素6</h1>
+            <code
+                >position: absolute;<br />
+                z-index: 3;</code
+            >
+        </div>
     </div>
 </body>
 </html>
