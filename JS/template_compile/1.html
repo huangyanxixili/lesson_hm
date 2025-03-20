@@ -7,20 +7,24 @@
 </head>
 <body>
     <script>
-        let template = '我是{{name}},年龄{{age}}，性别{{sex}}'
-        let person = {
-            name: '西西里',
-            age: 12,
-            sex: '男'
-        }
         // 规则 {{}} 正则（匹配字符串的规则）调用replace方法
         // 需求： 找到模板中的{{}}，然后把{{}} 替换成 person 对象中的属性值
 
         // vue 在挂载前 实例化过程 内存中会将模板先编译
         function compile(template, data) {
-            let reg = /1/
+            // 正则 按照一个个字符匹配  
+            // 1     -> 第一个字符
+            // [0-9] -> 匹配0~9中任意一个字符  []用于确定一个字符的范围
+            let reg = /1[0-9]/ 
+            // let reg = /^1[0-9]/ 添加^ 表示从字符串的开头匹配（用test测试'11a'也是true，因为从字符串开头恰好能匹配）
+            // let reg = /1[0-9]$/ 添加$ 表示从字符串的结尾匹配（用test测试'a11'也是true，因为从字符串结尾恰好能匹配）
+            // let reg = /1[0-9]{10}/  {} 表示匹配次数
+
+            // test 用于测试字符串内是否包含符合正则规则的子串（例如：如果'11'为true，那么'a11'也为true），并且返还boolean值
+            console.log(reg.test("a11")) 
             // let reg = /\{\{(\w+)\}\}/
         }
+        compile();
     </script>
 </body>
 </html>
