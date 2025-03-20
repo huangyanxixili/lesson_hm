@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归</title>
+</head>
+<body>
+    <script>
+        let template = '我是{{name}}, 年龄{{age}}, 性别{{sex}}'
+        let person = {
+            name: '西西里',
+            age: 12,
+            sex: '男'
+        }
+
+        function compile(template, data) {
+            const reg = /\{\{(\w+)\}\}/g;
+
+            return template.replace(reg, (match, path) => {
+                    console.log(match, path)
+                    return path in data ? data[path] : '';
+                }   
+            );
+        }
+
+console.log(compile(template, person));
+</script>
+</body>
+</html>

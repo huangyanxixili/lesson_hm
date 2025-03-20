@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+</head>
+<body>
+    <script>
+        let template = '我是{{name}}, 年龄{{age}}, 性别{{sex}}'
+        let person = {
+            name: '西西里',
+            age: 12,
+            sex: '男'
+        }
+
+        function compile(template, data) {
+            let reg = /\{\{([a-z]+)\}\}/
+            while(reg.test(template)) {
+                let key = reg.exec(template)[1];
+                let value = data[key];
+                template = template.replace(reg, value);
+            }
+            return template;
+        }
+
+        console.log(compile(template, person))
+    </script>
+</body>
+</html>

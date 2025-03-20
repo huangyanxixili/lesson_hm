@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模版编译</title>
+</head>
+<body>
+    <script>
+        let template = '我是{{name}}, 年龄{{age}}, 性别{{sex}}'
+        let person = {
+            name: '西西里',
+            age: 12,
+            sex: '男'
+        }
+
+        function compile(template, data) {
+            // 正则表达式
+            const reg = /\{\{(\w+)\}\}/;
+
+            // console.log(Object.prototype.toString.call(reg))
+            if(reg.test(template)) {
+                const name = reg.exec(template)[1]; // 拿到分组中的key
+                template = template.replace(reg, name in data ? data[name] : '');
+                return compile(template, data)
+            } else {
+                return template; // 退出条件
+            }
+        }
+
+console.log(compile(template, person));
+</script>
+</body>
+</html>

@@ -14,22 +14,23 @@
             sex: '男'
         }
 
-        // 匹配 { 本身，由于 '{}' 是正则的特殊字符，所以需要用 '\'转义
-
         function compile(template, data) {
-            // + 贪婪匹配 （尽可能多的匹配，1~多次）
-            // * 非贪婪匹配 （尽可能少的匹配，0~多次）
-            // () 用于分组
             console.log(template); 
+            // g 全局匹配 修饰符
+            // let reg = /\{\{([a-z]+)\}\}/g
+            // console.log(template.match(reg));
+
             let reg = /\{\{([a-z]+)\}\}/
             
-            // console.log(reg.test(template))
-
-            // 字符串上的match方法
-            // console.log(template.match(reg))
-
             let key = reg.exec(template)[1]
+            let value = data[key]
+            
             console.log(key);
+            console.log(value);
+
+            // 字符串上的replace方法，但是不是普通的替换
+            // 而是 正则替换 {{name}} -> value
+            console.log(template.replace(reg, value))
         }
 
         compile(template, person);
