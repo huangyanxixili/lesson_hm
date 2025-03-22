@@ -11,8 +11,25 @@
     </ul>
     <script>
         let list = document.getElementById("list");
-        // fetch()
-        console.log(require)
+        // function callback(data) {
+        //     console.log(data[0]);
+        // }
+        // fetch('http://127.0.0.1:3000')
+        // console.log(require)
+        let jsonp = (url) => {
+            let oScript = document.createElement('script');
+            oScript.src = url;
+            document.body.appendChild(oScript);
+            window.callback = callback;
+            
+        }
+        jsonp('http://localhost:3000/', (data) => {
+            list.innerHTML = data.map(user => `
+            <li>
+                ${user.name}
+            </li>
+            `).join("");
+        })
     </script>
 </body>
 </html>
