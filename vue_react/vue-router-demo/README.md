@@ -11,14 +11,15 @@
 - vuex / pinia 状态管理
 
 ## vue-router
-- 将接管路由，像交警一样
-- `<router-link>` 取代 `<a>` 标签
+- `router`将接管`route`，像交警一样
+
+- `<router-link>` 取代 `<a>` 标签（功能类似）
     router-link 组件包含 a 的功能，而且当切换路由时，将路由对应的组件切换到相应的位置
 - 组件还没有生效，无法识别组件 -> 其就会降级为`<div>`标签
    - 要启用 router-link 组件
         1. 在 main.js 中引入 router 组件
 
-- router 有专门的目录
+- router 有专门的目录（src/router/index.js）
    - index.js 入口配置文件
    - router-link 是 vue-router 提供的组件，只用.use(router)不用引入就可以生效
 
@@ -36,13 +37,14 @@
        - path路径, component组件
            - name  给路由起名字
            - props 给路由的组件传参
-        
+
 - 路由历史记录 history
     router-link 而不是a 组件
-    router.push() 入栈
-    栈顶是当前的路由，显示组件
-    可以前进，后退页面
-    导航 = url + history navigator
+   - `router.push()` 入栈
+   - `router.replace()` 替换栈顶
+        栈顶是当前的路由，显示组件
+   - 通过`router.go(n)`：可以前进，后退页面
+    导航 = url + history navigator，即：URL的变化 + 历史记录的管理
 
 - 实战开发
    - stylus
