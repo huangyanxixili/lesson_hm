@@ -1,18 +1,28 @@
 <script setup>
-import { ref } from 'vue'
 import CompA from './components/CompA.vue'
 import CompB from './components/CompB.vue'
+import { useUserStore } from './store/user'
+import { toRefs } from 'vue'
 
-const count = ref(0);
-function increment() {
-  count.value++;
+const userStore = useUserStore();
+const { isLogin, userInfo } = toRefs(userStore);
+const { toLogin, toLogout, setUserInfo } = userStore;
+const login = () => {
+  toLogin();
+  setUserInfo();
 }
 </script>
 
 <template>
   <div>
-    <CompA :count="count" @add="increment"/>
-    <CompB :count="count"/>
+    <div v-if="isLogin">
+      <img :src="userInfo.avatar">
+    </div>
+    <div v-else>
+      <button @click="toLogin">登录</button>
+    </div>
+    <CompA />
+    <CompB />
   </div>
 </template>
 

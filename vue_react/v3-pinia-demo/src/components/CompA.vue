@@ -1,31 +1,19 @@
 <template>
     <div>
         <h2>CompA</h2>
-        <p>count: {{ props.count }}</p>
-        <button @click="addCount">Add</button>
-        <CompSubA :count="props.count"/>
+        <p>count: {{ counterStore.count }}</p>
+        <button @click="counterStore.increment">Add</button>
+        <CompSubA />
     </div>
 </template>
 
 <script setup>
-import { 
-    defineProps,
-    defineEmits
-} from 'vue';
-
 import CompSubA from './CompSubA.vue';
-
-const emits = defineEmits(['add']);
-const props = defineProps({
-    count: {
-        type: Number,
-        required: true
-    }
-})
-
-function addCount() {
-    emits('add');
-}
+// 引入中央模块
+import { useCounterStore } from '../store/counter';
+const counterStore = useCounterStore();
+// console.log(counterStore);
+// const { count, increment } = counterStore;
 </script>
 
 <style scoped>
