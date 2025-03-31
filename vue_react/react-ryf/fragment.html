@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档碎片</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const container = document.getElementById('container');
+        const fragment = document.createDocumentFragment(); // 创建文档碎片
+
+        for(let i = 0; i < 100; i++) {
+            const div = document.createElement('div');
+            div.textContent = `Item ${ i + 1 }`;
+            // container.appendChild(div);  // 每次循环都会触发一次 DOM 更新
+            fragment.appendChild(div); // 将div添加到文档碎片中，而不是直接插入到真实的 DOM 树中。
+            // 文档碎片是内存中的虚拟DOM，它不会直接渲染到页面上，而是在内存中构建。
+        }
+        container.appendChild(fragment); // 将文档碎片添加到容器中，一次性将所有div添加到容器中。
+        // v8 -> 渲染 只进行了一次
+    </script>
+</body>
+</html>
