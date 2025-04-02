@@ -16,7 +16,7 @@
         // }
         // fetch('http://127.0.0.1:3000')
         // console.log(require)
-        let jsonp = (url) => {
+        let jsonp = (url, callback) => {
             let oScript = document.createElement('script');
             oScript.src = url;
             document.body.appendChild(oScript);

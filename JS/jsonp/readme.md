@@ -47,7 +47,6 @@
     - Domain：域名是由一系列的子域名组成的，用于标识网站或服务器的位置
           例如：`www.example.com` 和 `api.example.com`，即使域名相同，但是子域名不同也视为不同源
     - Port：端口是用于区分不同应用程序或服务的数字标识符
-          例如：`http://example.com:8080` 和 `http://example.com` 
           例如：`http://example.com:8080` 和 `http://example.com` （8080 vs 默认80）
 
 ## 前后端分离
