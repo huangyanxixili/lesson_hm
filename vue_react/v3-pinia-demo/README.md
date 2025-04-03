@@ -25,3 +25,19 @@
    - getters
         计算属性
         可以从状态中派生出新的状态
+
+
+- 安装pinia
+   - npm install pinia
+   - 创建实例
+```js
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const pinia = createPinia()
+const app = createApp(App)
+
+app.use(pinia)
+app.mount('#app')
+```
