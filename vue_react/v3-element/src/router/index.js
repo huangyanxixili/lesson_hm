@@ -48,10 +48,10 @@ const router = createRouter(
 // 路由守卫
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title || '默认标题' // 设置页面标题
-    // if (to.meta.requireLogin) {
-    //     next('/login')
-    //     return 
-    // }
+    if (to.meta.requireLogin) {
+        next('/login')
+        return 
+    }
     next()
 })
 
