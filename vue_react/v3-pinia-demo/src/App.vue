@@ -1,6 +1,6 @@
 <script setup>
 import CompA from './components/CompA.vue'
-import CompB from './components/CompB.vue'
+// import CompB from './components/CompB.vue'
 import { useUserStore } from './store/user'
 import { toRefs } from 'vue'
 
@@ -22,7 +22,7 @@ const login = () => {
       <button @click="toLogin">登录</button>
     </div>
     <CompA />
-    <CompB />
+    <!-- <CompB /> -->
   </div>
 </template>
 
