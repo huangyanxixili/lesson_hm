@@ -91,3 +91,21 @@
           ```
 
 
+- 登录流程
+    1. 前端提交登录请求
+        - login.vue 组件化表单
+        - 调用api/login 接口
+             - 项目多了一层目录 api 目录会管理应用的所有接口
+             - 接口好管理，统一维护
+             - 和组件解耦
+        - 统一配置的axios 实例发送请求
+   - 后端验证
+        - mock 模拟后端 
+          前后端分离的能力 前端独立完成项目开发，不需要等后端的接口
+               apifox 跳过前端，直接模拟get/post 等请求
+               前端 mock 跳过后端，直接模拟后端请求
+
+- jwt 登录
+   - npm i jsonwebtoken  =>  json + web + 令牌 
+   - sign 签发 
+   - token => verify 方法 返还用户对象（name avatar等...）

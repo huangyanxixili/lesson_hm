@@ -59,7 +59,12 @@ const onSubmit = async () => {
         if (valid) { // 校验通过，执行登录逻辑
             console.log('验证成功');
             const res = await login(form);
-            console.log(res);
+            // console.log(res);
+            if(res.data.code === 200) { // 登录成功
+                console.log(res.data.data);
+            } else { // 登录失败
+                console.log(res.data.message);
+            }
         } else {
             console.log('验证失败');
         }
