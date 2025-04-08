@@ -1,13 +1,22 @@
 - 如何开发一个vue项目
    - vite 工程化 
-        npm init vite
-   - vue 核心语法（响应式、组件化、指令等）
-        前端框架
-   - vue-router 路由
-   - pinia 状态管理
-   - element3 UI 组件库  
+          npm init vite + npm i + npm run dev
+   - vue 核心语法（响应式、组件化开发、指令等）
+          前端框架
+   - vue-router 路由管理 
+          npm i vue-router
+   - pinia 状态管理（代替了Vuex）
+          npm i pinia
+   - element3 UI 组件库（类似element plus）
+          npm i element3
    - stylus 样式预编译
+          npm i -g stylus
+          stylus --version（检测是否安装成功）
+          stylus -w eg.styl -o eg.css（实时监控并转换）
    - axios 网络请求（ajax 请求封装库）
+          npm i axios
+   - mockjs 模拟数据
+          npm i mockjs
 
 - app.use
     通过`app.use`注册的插件可以全局使用，无需在每个组件单独导入（全局注册）
