@@ -1,0 +1,19 @@
+{
+  "name": "jsx-babel",
+  "version": "1.0.0",
+  "description": "- es6 代码，放到很老的浏览器上 -> 不支持，es6代码2015年发布\r     const => var\r     如果非要在老浏览器上运行，就需要一种转换方法（es6 -> es5）\r         babel 技术\r - 那么babel能否将 JSX => 原生js执行的代码\r - stylus => css（.styl）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/cli":"^7.26.4",
+    "@babel/core":"^7.26.0",
+    "@babel/preset-env":"^7.26.0",
+    "@babel/preset-react":"^7.26.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
