@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX</title>
+</head>
+<body>
+    <div id="example"></div>
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="./babel.min.js"></script>
+    <script type="text/babel">
+        // text/babel 是某种格式的js 
+        // babel 来执行此内部代码的转义
+        // 普通script => JSX syntax 不支持 会报错
+        // const myTitle = <h1>Hello World</h1>;
+        // console.log(myTitle)
+        ReactDOM.render(
+            <h1>Hello World</h1>,
+            document.getElementById('example')
+        )
+    </script>
+</body>
+</html>

@@ -8,6 +8,9 @@
 - stylus => css（.styl）
 
 - babel
+   - 让任何js 的新特性，立刻投入代码生产
+        可以立刻投入 当下需要的环境
+        例如：async await 是es8的，但是老浏览器不支持，而通过babel可以转义当前环境支持的语法
    - es6+ 能够快速到来，得益于babel 工程化转义工具（将早期普及的es5 代码转义为 es6 代码）
    - 前端工程化的成熟 vite/babel/stylus/webpack 
    - vite 工程总负责， babel 是其中的代码编译的一项任务
@@ -35,3 +38,22 @@
            - @babel/core 核心的转义工作
            - .babelrc 配置文件
                 presets 预处理  @babel/preset-env 配置转义规则 es6+ => es5
+                加了一个 @babel/preset-react 就支持 jsx => js
+
+- 深入理解 jsx
+   - 并不是js的新特性
+   - 而是 react UI 组件语法，react 组件编写更简单，可读性更好
+        可以在 js 里，写html 
+   - jsx 不可以直接运行，由babel 按 @babel/preset-react 规则转义为 原生js
+   - React.createElement(tag, props, children) 
+        生成虚拟DOM
+
+- jsx 的理解
+   - 原生dom 性能差，直接用会有问题
+   - vue/react 会封装 dom 操作，性能好，VDOM
+        React.createElement
+        聚焦于业务，而非Dom 操作
+   - babel，设计jsx UI 组件语法 在 js 里面写 html
+        babel 会转义 jsx 语法为 React.createElement 
+   - html UI 开发 简单
+   - 直接进入到react 函数式组件中
