@@ -49,6 +49,9 @@ watchEffect(() => {
 
   <p>计数器二:{{ num }}</p>
   <button @click="incrementNum">增加2</button>
+  <BaseCard>
+    
+  </BaseCard>
 </div>
 </template>
 
