@@ -124,3 +124,26 @@
    - mock 目录下的文件 申明模拟后端接口
    - api 目录下 编写了接口的封装 axios
    - 前端组件onMounted 生命周期 发起接口请求
+
+- 需要验证用户身份的接口
+   - token 在localStorage 中存储
+   - 每次请求 URL 都要带上 ?token=${token} 很麻烦
+   - req 是由 请求行 请求头 请求体（post get没有）
+   - 请求头  Authorization: Bearer ${token} 专属头Authorization
+
+- 怎么做登录
+   - cookie + session 传统
+   - jwt 更适合现在
+        - 登录的本质是身份认证
+        - 得到一个身份 即用户
+        - 前端通过表单提交登录请求，username/password
+        - jwt提供了sign 方法，签发一个token给登录请求，用户身份用secret 加密
+               token 
+        - token 放到 localStorage 中
+        - 每个请求都要带上 token，axios 的拦截器来负责 headers 设置 Authorization 字段
+        - 后端 req 解出 设置的 Authorization 字段 token
+        - 调用 verify 方法 返还用户对象
+             - 后端就知道身份
+             - 前端也可以得到用户对象
+
+

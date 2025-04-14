@@ -29,7 +29,7 @@ const routes = [
     {
         path: '/login',
         component: () => import('../pages/Login.vue'),
-        name: 'Login',
+        name: 'login',
         meta: {
             title: '登录',
             requireLogin: false
