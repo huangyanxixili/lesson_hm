@@ -1,5 +1,8 @@
 <script setup>
 import DeepWatchExample from './components/DeepWatchExample.vue';
+import BaseCard from './components/BaseCard.vue';
+import Layout from './components/Layout.vue';
+
 import { 
   ref,
   watch,
@@ -50,8 +53,18 @@ watchEffect(() => {
   <p>计数器二:{{ num }}</p>
   <button @click="incrementNum">增加2</button>
   <BaseCard>
-    
+    <!-- slot 插槽 -->
+    <p>这里是默认插槽的内容，父组件slot形式传入，提升组件的定制性</p>
   </BaseCard>
+  <Layout>
+    <h1>默认slot</h1>
+    <template #header>
+      <h1>这里是头部内容</h1>
+    </template>
+    <template #footer>
+      <footer>这里是底部内容</footer>
+    </template>
+  </Layout>
 </div>
 </template>
 
