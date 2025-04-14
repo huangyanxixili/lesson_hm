@@ -16,7 +16,7 @@ const routes = [
         },
         children: [
             {
-                path: 'about',
+                path: '/about',
                 name: 'About',
                 component: () => import('../pages/About.vue'),
                 meta: {
@@ -49,8 +49,13 @@ const router = createRouter(
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title || '默认标题' // 设置页面标题
     if (to.meta.requireLogin) {
-        next('/login')
-        return 
+        // 如果能拿到token，就放行，否则跳转到登录页
+        if (localStorage.getItem('token')) {
+            next()
+        } else { 
+            next('/login')
+        }
+        return
     }
     next()
 })

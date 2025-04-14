@@ -6,6 +6,15 @@ const secret = 'huang123';
 
 export default [
     {
+        url:'/api/getUserInfo',
+        method: 'get',
+        response: req => {
+            return {
+                msg: "hehe"
+            }
+        }
+    },
+    {
         url: '/api/login',
         method: 'post',
         timeout: 2000,

@@ -10,3 +10,7 @@ export const login = (body) => request.post('/api/login', body).then(res => {
 })
 // 命名导出 => export 可以导出多个变量、函数或类等，并且每个导出都需要一个名字。导入时也需要使用相应的名字。
 // 默认导出 => export default 每个模块只能有一个默认导出。默认导出不需要名字，引用时需要解包。
+
+export const getUserInfo = () => request.get('/api/getUserInfo').then(res => {
+    return res;
+})

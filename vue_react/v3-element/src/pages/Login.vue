@@ -23,7 +23,9 @@
 <script setup>
 import { reactive, ref } from 'vue';
 import { login } from '../api/index.js';
+import { useRouter} from 'vue-router';
 
+const router = useRouter(); // hooks 编程
 const formRef = ref(null);
 // 表单数据
 const form = reactive({
@@ -61,7 +63,10 @@ const onSubmit = async () => {
             const res = await login(form);
             // console.log(res);
             if(res.data.code === 200) { // 登录成功
-                console.log(res.data.data);
+                // console.log(res.data.data);
+                let token = res.data.data.token; // 拿到token
+                localStorage.setItem('token', token); // 存储token
+                router.push('/')
             } else { // 登录失败
                 console.log(res.data.message);
             }
