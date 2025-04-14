@@ -1,12 +1,13 @@
-import pkg from 'jsonwebtoken';
+import pkg from 'jsonwebtoken'; // 生成token的包
 const { sign } = pkg;
 
 // jwt 密钥
 const secret = 'huang123';
 
+// 每个对象模拟一个API接口
 export default [
     {
-        url:'/api/getUserInfo',
+        url:'/api/getUserInfo', 
         method: 'get',
         response: req => {
             return {
@@ -15,10 +16,10 @@ export default [
         }
     },
     {
-        url: '/api/login',
-        method: 'post',
+        url: '/api/login', // 接口路径
+        method: 'post', // 请求方法
         timeout: 2000,
-        response: (req, res) => {
+        response: (req, res) => { // 响应数据
             let body = req.body;
             // console.log(body);
             // 替代数据库的查询

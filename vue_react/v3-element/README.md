@@ -8,7 +8,7 @@
    - pinia 状态管理（代替了Vuex）
           npm i pinia
    - element3 UI 组件库（类似element plus）
-          npm i element3
+          npm i element-plus --save
    - stylus 样式预编译
           npm i -g stylus
           stylus --version（检测是否安装成功）
