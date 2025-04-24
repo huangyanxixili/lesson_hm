@@ -20,3 +20,14 @@
     1. 安装 vant
     2. 安装 @vant/auto-import-resolver
     3. vite 支持
+    4. Components({
+      resolvers: [
+        VantResolver()
+      ]
+    }),
+
+- 移动端 App 
+  - vant 适合移动端 element-ui 适合pc端
+  - 路由 根组件App.vue -> router-view -> KeepAlive -> redirect -> 页面
+  - 图表字体库 iconfont 由阿里提供（亮点）
+    - 在线选择需要的图标
