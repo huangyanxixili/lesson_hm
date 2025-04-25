@@ -31,3 +31,4 @@
   - 路由 根组件App.vue -> router-view -> KeepAlive -> redirect -> 页面
   - 图表字体库 iconfont 由阿里提供（亮点）
     - 在线选择需要的图标
+  - 组件 + 状态专利（pinia）
