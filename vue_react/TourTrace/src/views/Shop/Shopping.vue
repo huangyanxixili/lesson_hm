@@ -54,6 +54,41 @@
                 </section>
             </header>
             
+            <body>
+                <!-- 专属推荐 -->
+                <section
+                class="recommend mx-4 p-2 text-sm text-black bg-white bg-opacity-80 rounded-2xl shadow-md"
+                >
+                    <div class="flex justify-between items-center">
+                        <h2 class="title font-bold text-lg flex items-center">
+                        专属推荐</h2>
+                        <p class="ml-2 text-xs justify-center mr-2 mb-2">
+                            <van-tag type="warning">{{ fieldValue }}</van-tag>
+                        </p>
+                    </div>
+                    <van-tabs v-model:active="active" class="">
+                        <van-tab
+                        :title="items.title"
+                        v-for="items in recommendItemState"
+                        >
+                            <div v-for="item in items.items"  class="item" :class="item.type">
+                                <div v-if="showRec(item.type)" class="text my-2 py-1 flex bg-gray-100 rounded-lg " >
+                                <div class="item-img w-[10rem] h-[8rem] overflow-hidden rounded-lg">
+                                    <van-image :src="item.image" class="w-full h-full object-cover"></van-image>
+                                </div>
+                                <div class="ml-1 mt-2 ">
+                                    <div class="font-bold text-md text-left">{{item.title}}</div>
+                                    <div class="text-mms text-left mt-2 text-gray-800 line-clamp-2 w-28">{{ item.place }}</div>
+                                    <div class=" text-left font-semibold mt-4">￥{{ item.price }}元</div>
+                                    <div class="text-ls text-left text-gray-500 ">已售{{ item.market }}份</div>
+                                </div>
+                                <van-icon name="cart-o" color="#1989fa" class="relative bottom-[-6.5rem] right-[-1rem]" size="1.5rem" />
+                                </div>
+                            </div>
+                        </van-tab>
+                    </van-tabs>
+                </section>
+            </body>
         </main>
     </div>
 </template>
@@ -82,6 +117,7 @@ const onConfirm = ({ selectedOptions }) => {
 };
 
 const searchField = ref("");
+
 </script>
 
 <style scoped>
