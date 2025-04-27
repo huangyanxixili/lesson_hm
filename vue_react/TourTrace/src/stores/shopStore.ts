@@ -1,10 +1,17 @@
 import { ref } from "vue"
 import { defineStore } from "pinia"
+// es6 module 高级用法
+import type { 
+    ShopTopBarItem,
+    recommendItem
+} from "../types/shop.ts"
 
 // 数据状态放到store中
 // 创建shop 的 store，数据分离
 export const useShopStore = defineStore('shop', () => {
-    const topBarState = ref([
+    // 静态数据
+    // 泛型（类型约束） 接收类型的传参来约束数据类型
+    const topBarState = ref<ShopTopBarItem[]>([
         {
             title: "酒店",
             icon: "hotel-o",
@@ -27,7 +34,7 @@ export const useShopStore = defineStore('shop', () => {
         }
     ])
 
-    const recommendItemState = ref([
+    const recommendItemState = ref<recommendItem[]>([
         {
             title: "一日游",
             items: [
